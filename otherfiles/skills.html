@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills - Ibrahim Elergui</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Global Styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Background Video */
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: rgba(0, 0, 0, 0.4);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: rgb(255, 255, 255);
+            text-shadow: 1px 1px 0.5px black;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            margin-right: 50px;
+        }
+
+        nav ul li a {
+            font-weight: 500;
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+            position: relative;
+            padding-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, 
+                #fff 0%, #fff 33%,
+                #0039A6 33%, #0039A6 66%,
+                #D52B1E 66%, #D52B1E 100%
+            );
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        nav ul li a:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            padding: 8rem 2rem 4rem;
+            min-height: 100vh;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card:hover {
+            transform: scale(1.05) translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.1),
+                rgba(255, 255, 255, 0.3)
+            );
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .skill-card:hover::before {
+            transform: translateY(0);
+        }
+
+        .skill-logo {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            transition: transform 0.4s ease;
+        }
+
+        .skill-card:hover .skill-logo {
+            transform: scale(1.1);
+        }
+
+        .skill-name {
+            font-size: 1.5rem;
+            color: #333;
+            margin: 1rem 0;
+        }
+
+        .skill-level {
+            width: 100%;
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #D52B1E, #0039A6);
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            z-index: 200;
+        }
+
+        .loading-screen .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid transparent;
+            border-top: 5px solid white;
+            border-right: 5px solid #0039A6;
+            border-bottom: 5px solid #D52B1E;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Background Video -->
+    <video autoplay loop muted class="background-video">
+        <source src="../russianflag.mp4" type="video/mp4">
+    </video>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Ibrahim Elergui</div>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../otherfiles/certificates.html">Certifications</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="aboutme.html">About Me</a></li>
+        </ul>
+    </nav>
+
+    <!-- Skills Section -->
+    <section class="skills-section">
+        <div class="skills-container">
+            <!-- Python -->
+            <div class="skill-card">
+                <img src="../lg/l1.png" alt="Python" class="skill-logo">
+                <h3 class="skill-name">Python</h3>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 90%;"></div>
+                </div>
+            </div>
+
+            <!-- MySQL -->
+            <div class="skill-card">
+                <img src="../lg/l2.png" alt="MySQL" class="skill-logo">
+                <h3 class="skill-name">MySQL</h3>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 85%;"></div>
+                </div>
+            </div>
+
+            <!-- HTML -->
+            <div class="skill-card">
+                <img src="../lg/l3.jpg" alt="HTML" class="skill-logo">
+                <h3 class="skill-name">HTML</h3>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 95%;"></div>
+                </div>
+            </div>
+
+            <!-- CSS -->
+            <div class="skill-card">
+                <img src="../lg/l4.png" alt="CSS" class="skill-logo">
+                <h3 class="skill-name">CSS</h3>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 88%;"></div>
+                </div>
+            </div>
+
+            <!-- JavaScript -->
+            <div class="skill-card">
+                <img src="../lg/l5.png" alt="JavaScript" class="skill-logo">
+                <h3 class="skill-name">JavaScript</h3>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 82%;"></div>
+                </div>
+            </div>
+
+            <!-- Java -->
+            <div class="skill-card">
+                <img src="../lg/l6.png" alt="Java" class="skill-logo">
+                <h3 class="skill-name">Java</h3>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 80%;"></div>
+                </div>
+            </div>
+
+            <!-- Photoshop -->
+            <div class="skill-card">
+                <img src="../lg/l7.png" alt="Photoshop" class="skill-logo">
+                <h3 class="skill-name">Photoshop</h3>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 85%;"></div>
+                </div>
+            </div>
+
+            <!-- Premiere Pro -->
+            <div class="skill-card">
+                <img src="../lg/l8.png" alt="Premiere Pro" class="skill-logo">
+                <h3 class="skill-name">Adobe Premiere Pro</h3>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 75%;"></div>
+                </div>
+            </div>
+
+            <!-- After Effects -->
+            <div class="skill-card">
+                <img src="../lg/l9.png" alt="After Effects" class="skill-logo">
+                <h3 class="skill-name">Adobe After Effects</h3>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 70%;"></div>
+                </div>
+            </div>
+
+            <!-- PHP -->
+            <div class="skill-card">
+                <img src="../lg/l10.png" alt="PHP" class="skill-logo">
+                <h3 class="skill-name">PHP</h3>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 75%;"></div>
+                </div>
+            </div>
+
+            <!-- Excel -->
+            <div class="skill-card">
+                <img src="../lg/l11.png" alt="Excel" class="skill-logo">
+                <h3 class="skill-name">Microsoft Excel</h3>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 92%;"></div>
+                </div>
+            </div>
+
+            <!-- PowerPoint -->
+            <div class="skill-card">
+                <img src="../lg/l12.png" alt="PowerPoint" class="skill-logo">
+                <h3 class="skill-name">Microsoft PowerPoint</h3>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 95%;"></div>
+                </div>
+            </div>
+
+            <!-- Word -->
+            <div class="skill-card">
+                <img src="../lg/l13.png" alt="Word" class="skill-logo">
+                <h3 class="skill-name">Microsoft Word</h3>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 90%;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Loading screen
+        window.addEventListener('load', function() {
+            const loadingScreen = document.querySelector('.loading-screen');
+            setTimeout(() => {
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 1500);
+        });
+        ScrollReveal().reveal('.skill-card', {
+            delay: 200,
+            distance: '50px',
+            duration: 1000,
+            easing: 'cubic-bezier(0.5, 0, 0, 1)',
+            interval: 200,
+            opacity: 0,
+            origin: 'bottom',
+            reset: false,
+            viewFactor: 0.2,
+            mobile: true
+        });
+
+        // Add intersection observer for progress bars
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBar = entry.target.querySelector('.skill-progress');
+                    const width = progressBar.style.width;
+                    progressBar.style.width = '0';
+                    setTimeout(() => {
+                        progressBar.style.width = width;
+                    }, 100);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.skill-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

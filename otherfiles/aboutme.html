@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="aboutme.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Background Video -->
+    <video autoplay loop muted class="background-video">
+        <source src="../russianflag.mp4" type="video/mp4">
+    </video>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">Ibrahim Elergui</div>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../otherfiles/certificates.html">Certifications</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="aboutme.html">About Me</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Me Section -->
+    <section class="about-section">
+        <div class="about-card">
+            <h2>About Me</h2>
+            <p id="about-text">
+                My name is Ibrahim, and I am a Tunisian student with a deep admiration for Russian culture and language.
+                Despite coming from a modest background, I have always excelled academically and am eager to unlock my full potential.
+                I am currently learning Russian, driven by my passion for your culture, history, and traditions.
+                My dream is to contribute to your esteemed university as a dedicated and hardworking student.
+            </p>
+            <button class="translate-btn" onclick="toggleLanguage()">Translate to Russian</button>
+        </div>
+    </section>
+
+    <script src="aboutme.js"></script>
+</body>
+</html>

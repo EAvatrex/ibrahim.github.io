@@ -1,0 +1,96 @@
+/* styles.css */
+
+/* Base Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    transition: background 0.5s ease, color 0.5s ease;
+  }
+  
+  body.dark {
+    background: #1e1e1e;
+    color: #fff;
+  }
+  
+  .container {
+    max-width: 500px;
+    width: 90%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: background 0.5s ease, color 0.5s ease;
+  }
+  
+  body.dark .container {
+    background: #333;
+  }
+  
+  /* Button Styles */
+  button {
+    cursor: pointer;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: 0.3s ease;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  #add-task {
+    background: #ff9a9e;
+  }
+  
+  #start-timer {
+    background: #4caf50;
+    color: #fff;
+  }
+  
+  #pause-timer {
+    background: #ff9800;
+    color: #fff;
+  }
+  
+  #reset-timer {
+    background: #f44336;
+    color: #fff;
+  }
+  
+  body.dark button {
+    background: #444;
+    color: #fff;
+  }
+  
+  .progress-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: conic-gradient(#ff6a6a 0%, #fad0c4 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: inherit;
+  }
+  
+  .progress-circle span {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    cursor: text;
+  }
+#new-task{
+    padding: 10px 25px;
+    margin: 5px;
+    border: 3px solid #ff6a6a ;
+}

@@ -1,0 +1,217 @@
+/* Reset and Global Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+/* Background Video */
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Navigation Bar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 0.5px black;
+}
+
+nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin-right: 50px;
+}
+
+nav ul li a {
+    font-weight: 500;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, 
+        #fff 0%, #fff 33%,
+        #0039A6 33%, #0039A6 66%,
+        #D52B1E 66%, #D52B1E 100%
+    );
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+nav ul li a:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+
+/* Profile Section */
+.profile-section {
+    text-align: center;
+    margin-top: 15%;
+    color: white;
+}
+
+.profile-section h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.profile-picture {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+    animation: circular-border 5s linear infinite;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+/* Circular Border Animation with Russian Flag Colors */
+@keyframes circular-border {
+    0% { border: 5px solid red; }
+    33% { border: 5px solid white; }
+    66% { border: 5px solid blue; }
+    100% { border: 5px solid red; }
+}
+
+/* Handwriting Effect */
+.handwriting-effect {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    display: inline-block;
+}
+
+.typing-effect {
+    color: yellow;
+    border-right: 2px solid white;
+    animation: typing 3s steps(30, end), blink 0.6s infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+/* Social Icons */
+/* Social Icons */
+.social-icons {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 8px;
+    border-radius: 3px;
+    overflow: hidden; /* Prevents scrollbars from appearing on hover */
+}
+
+.social-icons a {
+    color: white; /* Default color, overridden by specific classes */
+    font-size: 1.8rem;
+    transition: transform 0.3s, color 0.3s, text-shadow 0.3s;
+    text-decoration: none;
+}
+
+.social-icons :first-child { color: #1877F2; text-shadow: 0px 0px 5px blue;}
+.social-icons :nth-child(2) { color: #0077B5; text-shadow: 0px 0px 5px blue;}
+.social-icons :nth-child(3) { color: #333; text-shadow: 0px 0px 5px #333;}
+.social-icons :nth-child(4) { color: #E1306C; text-shadow: 0px 0px 5px #E1306C;}
+
+.social-icons a:hover {
+    transform: scale(1.2); /* Increases size */
+    color: gold; /* Changes color on hover */
+    text-shadow: 0 0 15px gold; /* Adds glow effect */
+}
+
+
+/* Loading Screen */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    z-index: 200;
+}
+
+/* Spinner with Russian Flag Colors */
+.loading-screen .spinner {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: conic-gradient(
+        white 0deg 120deg,
+        blue 120deg 240deg,
+        red 240deg 360deg
+    );
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+    /* Optional: Add a slight shadow for better visibility */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Spinner Animation */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Loading Text Styling */
+.loading-screen p {
+    font-size: 1.2rem;
+    color: white;
+}
+
+/* Ensure content is visible after loading */
+body.loaded {
+    overflow: auto;
+}
